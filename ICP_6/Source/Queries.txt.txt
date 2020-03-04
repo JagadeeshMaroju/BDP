@@ -1,0 +1,57 @@
+Question 1:
+
+$solrctlinstancedir --generate -
+
+$solrctl instancedir --create films /tmp/films
+
+ls /tmp/films/conf/
+
+$gedit /tmp/films/conf/schema.xml
+
+
+Queries in solr q field for movies dataset
+
+1.name:Dirty
+
+2.name:"Black" AND directed_by:"Sanjay Leela Bhansali"
+
+3. name:Dirty*
+
+4.name:"Dirty"~9
+
+5. (name:Dirty OR name:Deed)^1.5 (genre:Black OR genre:Drama)
+
+6. name:"Dirty Deeds"
+
+Question 2:
+
+Queries to execute in solr for books dataset
+
+1. To restrict number of records put the 2 value in rows field
+   In row field 2
+
+2. In q field 
+   
+   genre_s:scifi
+
+   In fl field
+
+  cat,price_c,author_s
+
+
+3. In q field put  *:*
+ 
+   In rows field put 0
+
+   Tick on facet
+  
+  In facet_field put author
+
+
+4. In q field put author:"George R.R. Martin" AND inStock:"true"
+
+  In wt field change dropdown to csv
+
+5. In q field put price:[5.99 TO 6.99] 
+
+
