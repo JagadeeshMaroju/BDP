@@ -1,6 +1,6 @@
 Question 1:
 
-$solrctlinstancedir --generate -
+$solrctl instancedir --generate -
 
 $solrctl instancedir --create films /tmp/films
 
