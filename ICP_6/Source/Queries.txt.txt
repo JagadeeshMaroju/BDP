@@ -4,6 +4,8 @@ $solrctl instancedir --generate -
 
 $solrctl instancedir --create films /tmp/films
 
+$solrctl collection --create films
+
 ls /tmp/films/conf/
 
 $gedit /tmp/films/conf/schema.xml
@@ -24,6 +26,11 @@ Queries in solr q field for movies dataset
 6. name:"Dirty Deeds"
 
 Question 2:
+
+$solrctl instancedir --create books_collection /tmp/films
+
+$solrctl collection --create books_collection
+
 
 Queries to execute in solr for books dataset
 
