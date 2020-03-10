@@ -1,0 +1,35 @@
+1. CREATE KEYSPACE test WITH REPLICATION={'class':'SimpleStrategy','replication_factor':3}
+
+2. use test;
+
+3. create table emp1(employee_id int primary key,department text,lastname text,years_with_company int,hiredate date,jobtitle text,salary int,managerid int);  
+
+4. select * from emp1; 
+
+5. copy emp1 (employee_id,department,lastname,years_with_company,hiredate,jobtitle,salary,managerid) from 'C:\Users\jagad\Downloads\employee_entries (1).csv' with delimiter='|' and HEADER=true; 
+
+6. select * from emp1;    
+
+7. select lastname,salary from emp1 where jobtitle='manager'; 
+
+
+8. select lastname,salary from emp1 where jobtitle='manager' allow filtering;  
+
+9. select name,jobtitle,salary from emp1 where hiredate='1999-06-11';   
+
+10. select lastname,jobtitle,salary from emp1 where hiredate='1999-06-11' allow filtering; 
+
+11. select lastname,salary from emp1; 
+
+12. select lastname,salary,managerid from emp1 where salary=45000 allow filtering; 
+
+13. CREATE CUSTOM INDEX lastname_idx ON emp1 (lastname) USING 'org.apache.cassandra.index.sasi.SASIIndex' WITH OPTIONS = {'mode': 'CONTAINS', 'analyzer_class': 'org.apache.cassandra.index.sasi.analyzer.StandardAnalyzer', 'case_sensitive': 'false'};
+
+
+14. select * from emp1 where lastname like '%J';                 
+
+
+15. CREATE FUNCTION IF NOT EXISTS len (input text) CALLED ON NULL INPUT RETURNS int LANGUAGE java AS 'return input.length();';
+
+
+16. select len(lastname) from emp1 where lastname like 'G%';                                                                                                                            
